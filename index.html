@@ -1,22 +1,485 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Usman | Portfolio</title>
-</head>
-<body>
-    <h1>Welcome to My Portfolio</h1>
-    <h2>Muhammad Usman</h2>
-    <p>I am a Computer Science graduate and aspiring Web Developer.</p>
 
-    <h3>My Skills</h3>
-    <ul>
-        <li>HTML and CSS</li>
-        <li>JavaScript</li>
-        <li>PHP and MySQL</li>
-        <li>Python</li>
-    </ul>
+    <title>Muhammad Usman | Web Developer</title>
+
+    <meta name="description" content="Muhammad Usman's portfolio, skills, projects, and web development journey.">
+
+    <style>
+        :root {
+            --background: #080b14;
+            --surface: #111827;
+            --blue: #3b82f6;
+            --blue-light: #60a5fa;
+            --text: #f8fafc;
+            --muted: #a5b4c8;
+            --border: #263449;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        header {
+            background: rgba(8, 11, 20, 0.96);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: var(--blue-light);
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue-light);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            padding: 90px 0;
+            background:
+                radial-gradient(
+                    circle at 85% 30%,
+                    #142b50 0,
+                    transparent 38%
+                );
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .eyebrow {
+            color: var(--blue-light);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: clamp(36px, 7vw, 62px);
+            line-height: 1.15;
+            margin: 15px 0;
+        }
+
+        .highlight {
+            color: var(--blue-light);
+        }
+
+        .hero p,
+        .section-description {
+            color: var(--muted);
+            max-width: 650px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 21px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            color: var(--blue-light);
+            border: 1px solid var(--blue);
+        }
+
+        .btn-outline:hover {
+            background: #142b50;
+        }
+
+        /* Sections */
+        section {
+            padding: 75px 0;
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: var(--blue-light);
+        }
+
+        .section-description {
+            margin-bottom: 30px;
+        }
+
+        /* About */
+        .about-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+        }
+
+        /* Skills and projects */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: var(--blue);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            color: var(--blue-light);
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .skill-label {
+            display: inline-block;
+            background: #172640;
+            border: 1px solid #29446c;
+            color: #bfdbfe;
+            border-radius: 6px;
+            padding: 5px 10px;
+            margin: 5px 5px 0 0;
+            font-size: 13px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--blue-light);
+            font-weight: bold;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: linear-gradient(135deg, #111827, #10264a);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin: 10px 0 20px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 75px 0;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
+            .about-box,
+            .card,
+            .contact-box {
+                padding: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a class="logo" href="#home">MU.</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <p class="eyebrow">Welcome to my portfolio</p>
+
+                <h1>
+                    Hi, I'm <span class="highlight">Muhammad Usman</span>
+                </h1>
+
+                <h2>Aspiring Web Developer</h2>
+
+                <p>
+                    I am a Computer Science graduate passionate about
+                    web development, Python, and Artificial Intelligence.
+                    I enjoy learning new technologies and building useful
+                    digital solutions.
+                </p>
+
+                <div class="buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Projects
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About <span>Me</span></h2>
+
+                <div class="about-box">
+                    <p>
+                        I am a Computer Science graduate working to improve
+                        my skills in software development and technology.
+                        My interests include creating websites, developing
+                        applications, working with databases, and exploring
+                        Artificial Intelligence. My goal is to grow into
+                        a skilled IT professional and build solutions that
+                        help people and businesses.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">My <span>Skills</span></h2>
+
+                <p class="section-description">
+                    Technologies I have learned and am continuing to develop.
+                </p>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>Web Development</h3>
+                        <p>
+                            Building the structure and appearance of websites.
+                        </p>
+                        <span class="skill-label">HTML</span>
+                        <span class="skill-label">CSS</span>
+                        <span class="skill-label">JavaScript</span>
+                    </div>
+
+                    <div class="card">
+                        <h3>Backend Development</h3>
+                        <p>
+                            Learning server-side programming and databases.
+                        </p>
+                        <span class="skill-label">PHP</span>
+                        <span class="skill-label">MySQL</span>
+                    </div>
+
+                    <div class="card">
+                        <h3>Programming</h3>
+                        <p>
+                            Developing my programming and problem-solving skills.
+                        </p>
+                        <span class="skill-label">Python</span>
+                    </div>
+
+                    <div class="card">
+                        <h3>Future Learning</h3>
+                        <p>
+                            Exploring intelligent systems and modern technology.
+                        </p>
+                        <span class="skill-label">Artificial Intelligence</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">My <span>Projects</span></h2>
+
+                <p class="section-description">
+                    Some projects and learning work I can showcase.
+                    Add your project links as you publish them.
+                </p>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>Personal Portfolio</h3>
+                        <p>
+                            A responsive personal website built with HTML
+                            and CSS to showcase my background and skills.
+                        </p>
+                        <a class="project-link" href="#home">
+                            View This Website →
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <h3>Petrol Station Management System</h3>
+                        <p>
+                            An academic software project concept for
+                            managing fuel stock, sales records, and reports.
+                        </p>
+                        <span class="skill-label">PHP</span>
+                        <span class="skill-label">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">
+                        Let's <span>Connect</span>
+                    </h2>
+
+                    <p>
+                        Would you like to discuss a project or connect
+                        with me professionally? Visit my GitHub profile.
+                    </p>
+
+                    <a
+                        class="btn btn-primary"
+                        href="https://github.com/binusman004"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Visit My GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                &copy; 2026 Muhammad Usman. Built with HTML and CSS.
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
